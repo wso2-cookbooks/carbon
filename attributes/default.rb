@@ -12,8 +12,11 @@ default["carbon"]["database_password"] = "passwd4mysql"
 
 default["carbon"]["product_name"] = "wso2carbon"
 default["carbon"]["product_version"] = "4.2.0"
+
 default["carbon"]["user"] = "wso2carbon"
 default["carbon"]["group"] = "wso2carbon"
+default["carbon"]["user_shell"] = "/bin/sh"
+default["carbon"]["user_comment"] = "WSO2 User"
 
 default["carbon"]["repository_lib"] = "/repository/components/lib"
 default['carbon']["carbon_common_libs"] = ['mysql-connector-java-5.1.30-bin.jar']
