@@ -1,0 +1,57 @@
+<datasources-configuration xmlns:svns="http://org.wso2.securevault/configuration">
+  
+    <providers>
+        <provider>org.wso2.carbon.ndatasource.rdbms.RDBMSDataSourceReader</provider>
+    </providers>
+  
+    <datasources>
+      
+        <datasource>
+            <name>WSO2_CARBON_DB</name>
+            <description>The datasource used for local registry</description>
+            <jndiConfig>
+                <name>jdbc/WSO2CarbonDB</name>
+            </jndiConfig>
+            <definition type="RDBMS">
+                <configuration>
+                    <url>jdbc:h2:repository/database/WSO2CARBON_DB;DB_CLOSE_ON_EXIT=FALSE;LOCK_TIMEOUT=60000</url>
+                    <username>wso2carbon</username>
+                    <password>wso2carbon</password>
+                    <driverClassName>org.h2.Driver</driverClassName>
+                    <maxActive>50</maxActive>
+                    <maxWait>60000</maxWait>
+                    <testOnBorrow>true</testOnBorrow>
+                    <validationQuery>SELECT 1</validationQuery>
+                    <validationInterval>30000</validationInterval>
+                </configuration>
+            </definition>
+        </datasource>
+
+	<% if node['carbon']['datasources'].length > 0 -%>
+	<%    node['carbon']['datasources'].each do |datasource| -%>
+	<datasource>
+	    <name><%= datasource[:name] %></name>
+            <description><%= datasource[:description] %></description>
+            <jndiConfig>
+                <name><%= datasource[:jndiConfig_name] %></name>
+            </jndiConfig>
+            <definition type="RDBMS">
+                <configuration>
+                    <url><%= datasource[:jdbc_url] %></url>
+                    <username><%= datasource[:database_user] %></username>
+                    <password><%= datasource[:database_password] %></password>
+                    <driverClassName><%= datasource[:driver_class_name] %></driverClassName>
+                    <maxActive><%= datasource[:max_active] %></maxActive>
+                    <maxWait><%= datasource[:max_wait] %></maxWait>
+                    <testOnBorrow>true</testOnBorrow>
+                    <validationQuery><%= datasource[:validation_query] %></validationQuery>
+                    <validationInterval><%= datasource[:validation_interval] %></validationInterval>
+               </configuration>
+            </definition>
+        </datasource>
+	<%   end -%>
+  	<% else -%>
+  	<% end -%>
+    </datasources>
+
+</datasources-configuration>

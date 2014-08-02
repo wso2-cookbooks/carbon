@@ -57,8 +57,10 @@ default["carbon"]["datasources"] = [{		name:'WSO2_RDS_DB_UM',
 						max_active:"50",max_wait:"60000",
 						validation_query:"SELECT 1",
 						validation_interval:"30000"}]
+
 default['carbon']['registry_jdbc_url'] = "jdbc:mysql://localhost:3306/wso2_reg"
 default["carbon"]["registry_database_user"] = "dbuser"
 default['carbon']['mounted_registry_dataSource'] = "jdbc/WSO2DBReg"
 default['carbon']['config_registry_target'] = "/_system/carbonconfig"
+default['carbon']['versionResourcesOnChange'] = "true"
 
