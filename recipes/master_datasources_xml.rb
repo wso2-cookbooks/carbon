@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: carbon
-# Recipe:: carbon_xml
+# Recipe:: master_datasources_xml
 #
 # ----------------------------------------------------------------------------
 #  Copyright 2005-2014 WSO2, Inc. http://www.wso2.org
@@ -18,22 +18,15 @@
 #  limitations under the License.
 # ----------------------------------------------------------------------------
 
-#Generate carbon.xml
+#Generate master_datasources.xml
 
-carbon_xml = "#{node['carbon']['product_path']}/#{node["carbon"]["product_name"]}-#{node["carbon"]["product_version"]}/repository/conf/carbon.xml"
-
-template carbon_xml do
-  source 'carbon.xml.erb'
+master_datasources_xml = "#{node['carbon']['product_path']}/#{node["carbon"]["product_name"]}-#{node["carbon"]["product_version"]}/repository/conf/datasources/master-datasources.xml"
+  
+template master_datasources_xml do
+  source 'master-datasources.xml.erb'
   mode 0644
   owner node["carbon"]["user"]
   group node["carbon"]["group"]
   variables(
-	:product_name => node["carbon"]["server_name"],
-	:product_version => node["carbon"]["product_version"],
-	:server_key => node["carbon"]["server_key"],
-	:host_name => node["carbon"]["server_host_name"],
-	:server_roles => node["carbon"]["server_roles"],
-	:ports_offset => node["carbon"]["server_ports_offset"],
-        :axis2_service_path => node["carbon"]["axis2_service_path"],
-	:EnableEmailUserName => node["carbon"]["enable_email_user_name"])
+    :datasources => node['carbon']['datasources'])
 end
