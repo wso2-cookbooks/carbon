@@ -1,21 +1,29 @@
 Description
 ===========
-Cook book for WSO2 servers
+Cook book for WSO2 Carbon servers
+
 Requirements
-============
+------------
+### Platforms
+- Debian, Ubuntu
+- CentOS, Red Hat, Fedora, Amazon Linux
+- Microsoft Windows
 
 Attributes
-==========
+----------
+
+Recipes
+-------
 
 Usage
-=====
+-----
 
 License & Authors
 -----------------
 - Author:: Deependra Ariyadewa (<deependra@gmail.com>)
 
 ```text
-Copyright:: 2015, WSO2, Inc. (http://wso2.com)
+Copyright 2005-2015, WSO2, Inc. (http://wso2.com)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
